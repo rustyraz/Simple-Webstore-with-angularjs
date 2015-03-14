@@ -1,0 +1,40 @@
+<div ng-controller="ProductDetailsController as product">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4>{{item[0].name}} <span class="pull-right">{{item[0].price | currency}}</span></h4>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="col-sm-8"><img width="100%" ng-src="{{mainImageUrl}}" /></div>
+								<div class="col-md-4" >
+									<div class="panel panel-default" style="max-height:400px; overflow:hidden; overflow-y:scroll;">
+										<div class="panel-body">
+											<a ng-repeat="image in item[0].images" ng-click="setImage(image)" class="thumbnail">
+												<img ng-src="{{image}}">
+											</a>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<h3>Description</h3>
+							<p>{{item[0].description}}</p>
+							<blockquote>Available: {{item[0].available | checkAvailability}}</blockquote>
+							<blockquote>Has Discount: {{item[0].hasDiscount | hasDiscount}}</blockquote>
+							<button class="btn btn-lg btn-info">Add to Cart</button>
+						</div>
+					</div>
+							
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	

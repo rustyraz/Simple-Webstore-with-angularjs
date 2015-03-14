@@ -1,0 +1,49 @@
+      <div class="row" ng-controller="ProductsController as product">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Search list: </label> <input type="text" class="input-md form-control" ng-model="searchName" />            
+          </div>
+          <div class="form-group">
+            <label>Sort by:</label>
+            <select ng-model="orderByProperty" class="form-control">
+              <option value=""></option>
+              <option value="name">Alphabetical</option>
+              <option value="price">Price</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <ul class="list-group">
+            <li class="list-group-item item-listing" ng-repeat="product in products | filter:searchName | orderBy:orderByProperty">
+
+              <div class="media">
+                <div class="media-left">
+                  <a href="#/item/{{product.id}}">
+                    <img class="media-object" width="128px" ng-src="{{product.thumb}}" alt="...">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    <a href="#/item/{{product.id}}">{{product.name}}</a>
+                    <span class="pull-right">{{product.price | currency }}</span>
+                  </h4> 
+                  {{product.description}} 
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <input class="form-control input-md" type="number" name="qty" value="1">
+                      </div> 
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="submit" class="btn btn-success btn-block" value="Add to cart">
+                    </div>
+                  </div>
+                      
+                                       
+                </div>
+              </div>
+              
+            </li>
+          </ul>
+        </div>
+      </div>
